@@ -1,0 +1,339 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="年轮">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://steptime.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>android的通知管理 | 年轮</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="年轮" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(../img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="张志">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 为学日益，为道日损 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://steptime.com">年轮</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="android的通知管理">
+            
+	            android的通知管理
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/android" title="android">
+                        android
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2015/11/04</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>1083</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>##什么是通知</p>
+<p>通知通常先以图标的形式显示在通知区域，用户可以打开抽屉式通知栏查看通知的详细信息。 通知区域和抽屉式通知栏均是由系统控制的区域，用户可以随时查看，通知分为正在进行和普通通知，普通通知又分为可被清除按钮清除和不可被清除按钮清除。为了引起用户注意通知可以加入通知铃声、震动和闪灯。</p>
+<p>通知顾名思义就是应用发出的用于提醒用户的信息，每个应用的通知都会显示在通知栏上。比如一个新闻类应用每天发一个当天重要的新闻，一个提醒类应用发出一个提醒通知等等。</p>
+<h3 id="通知的属性"><a href="#通知的属性" class="headerlink" title="通知的属性"></a>通知的属性</h3><p>通知包含以下常用属性。</p>
+<ul>
+<li>大图标</li>
+<li>小图标</li>
+<li>标题</li>
+<li>详细文本</li>
+<li>flags(通知位置)</li>
+<li>defaults(效果)</li>
+<li>contentIntent(点击通知后如何跳转)</li>
+</ul>
+<h3 id="通知的位置"><a href="#通知的位置" class="headerlink" title="通知的位置"></a>通知的位置</h3><ul>
+<li>FLAG_AUTO_CANCEL       该通知能被状态栏的清除按钮给清除掉</li>
+<li>FLAG_NO_CLEAR          该通知不能被状态栏的清除按钮给清除掉</li>
+<li>FLAG_ONGOING_EVENT     通知放置在正在运行</li>
+</ul>
+<p>###通知的效果</p>
+<ul>
+<li>DEFAULT_ALL        使用默认效果</li>
+<li>DEFAULT_LIGHTS     默认闪光</li>
+<li>DEFAULT_SOUND      默认声音(uri，指向路径)</li>
+<li>DEFAULT_VIRATE     默认震动(需要添加震动权限VIBRATE： android.permission.VIBRATE)</li>
+</ul>
+<h2 id="相关类"><a href="#相关类" class="headerlink" title="相关类"></a>相关类</h2><p>###NotificationManager</p>
+<p> NotificationManager是一个系统Service，必须通过 getSystemService()方法来获取,它是状态栏通知的管理类，负责发送通知、清楚通知等。</p>
+<p>###Notification</p>
+<p> 具体的状态栏通知对象，可以设置图标、文字、提示声音、振动等参数。</p>
+<p>###<a href="http://blog.csdn.net/yuzhiboyi/article/details/8484771" target="_blank" rel="noopener">PendingIntent</a></p>
+<p>一个可以在满足一定条件下执行的Intent。</p>
+<p>###NotificationCompat.Builder<br>Android3.0之后，一般推荐使用NotificationCompat.Builder构建。NOTE:此类创建Notification所用的是建造者模式。</p>
+<h3 id="RemoteViews"><a href="#RemoteViews" class="headerlink" title="RemoteViews"></a>RemoteViews</h3><p>RemoteView描述一个view，而这个view是在另外一个进程显示的，在通知中用于自定义通知布局。NOTE:自定义通知布局的可用高度取决于通知视图。普通视图布局限制为 64 dp，扩展视图布局限制为 256 dp。</p>
+<h3 id="TaskStackBuilder"><a href="#TaskStackBuilder" class="headerlink" title="TaskStackBuilder"></a>TaskStackBuilder</h3><p>Android通过TaskStackBuilder来实现导航。这个类是创建任务之间的导航堆栈，和按返回键返回上一个Activity的的堆栈是有区别的，<code>NOTE:使用TaskStackBuilder会使得你之前的Activity都被杀死。</code></p>
+<p>##使用场景</p>
+<ul>
+<li>后台服务定时启动</li>
+<li>升级提醒</li>
+<li>后台线程操作提醒</li>
+<li>推送类通知(提醒点击进入相关界面)</li>
+<li>多个同类提醒只加数量</li>
+</ul>
+<p>##说明<br>上面提到的场景我已经写好了例子放在<a href="https://github.com/defineMyLove/AndroidNotificationDemo" target="_blank" rel="noopener">github</a>上，学习的朋友可以下载下来运行。</p>
+<p>##资料</p>
+<ul>
+<li><a href="https://github.com/defineMyLove/AndroidNotificationDemo" target="_blank" rel="noopener">本文章对应的例子</a></li>
+<li><a href="http://bbs.9ria.com/thread-241146-1-1.html" target="_blank" rel="noopener">Android–通知之Notification</a></li>
+</ul>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="../img/alipay.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip"></p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2015/11/22/浏览器发展历史/" class="pre-post btn btn-default" title="浏览器发展历史">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">浏览器发展历史</span>
+        </a>
+    
+    
+        <a href="/2015/10/29/gtihub+hexo博客搭建/" class="next-post btn btn-default" title="gtihub+hexo博客搭建">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">gtihub+hexo博客搭建</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+   <p>评论系统未开启，无法评论！</p>
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#通知的属性"><span class="toc-text">通知的属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通知的位置"><span class="toc-text">通知的位置</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#相关类"><span class="toc-text">相关类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RemoteViews"><span class="toc-text">RemoteViews</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TaskStackBuilder"><span class="toc-text">TaskStackBuilder</span></a></li></ol>
+        
+    </li></div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
