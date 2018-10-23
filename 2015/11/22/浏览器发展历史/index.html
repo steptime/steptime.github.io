@@ -305,7 +305,28 @@
 
     <div id="comments">
         
-   <p>评论系统未开启，无法评论！</p>
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: '6MFTpyPc0Vp97yM0CoPo8Rzm-gzGzoHsz',
+            appKey: 'a4ySMT15yFc4hQPVGfUsw0j1',
+            placeholder: '谢谢留言',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
 
     </div>
 
